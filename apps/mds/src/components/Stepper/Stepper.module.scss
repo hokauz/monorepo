@@ -1,0 +1,169 @@
+$marker-size: 32px;
+$marker-border-radius: 50%;
+$marker-background-color: #ccc;
+$market-background-color-error: #f00;
+$market-backgorund-color-checked: #0f0;
+
+$indicator-color: #000;
+$indicator-color-active: #0f0;
+
+$horizontal-container-margin-top: 8px;
+$vertical-container-margin-left: 16px;
+
+%marker {
+  width: $marker-size;
+  height: $marker-size;
+  border-radius: $marker-border-radius;
+  background-color: $marker-background-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+  cursor: pointer;
+
+  &-error {
+    background-color: $market-background-color-error;
+  }
+  &-checked {
+    background-color: $market-backgorund-color-checked;
+  }
+
+}
+
+%label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+%description {
+  font-size: 12px;
+}
+
+%horizontal-line {
+  border-bottom: 1px dashed $indicator-color;
+}
+
+%horizontal-line-active {
+  border-bottom-style: solid;
+  border-bottom-color: $indicator-color-active;
+}
+
+%horizontal-container {
+  text-align: center;
+  margin-top: $horizontal-container-margin-top;
+}
+
+%vertical-container {
+  margin-left: $vertical-container-margin-left;
+}
+
+%vertical-line {
+  height: 100%;
+  border-right: 1px dashed $indicator-color;
+}
+
+%vertical-line-active {
+  border-right-style: solid;
+  border-right-color: $indicator-color-active;
+}
+
+.stepper {
+  display: flex;
+
+  &--horizontal {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  &--vertical {
+    height: 100%;
+    flex-direction: column;
+  }
+}
+
+.step-vertical {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
+  &__indicator {
+    margin-right: 16px;
+  }
+
+  &__marker {
+    @extend %marker;
+  }
+
+  &__connector {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__line {
+    width: 1px;
+    @extend %vertical-line;
+
+    &--active {
+      @extend %vertical-line-active;
+    }
+  }
+
+  &__container {
+    @extend %vertical-container;
+  }
+}
+
+.step-horizontal {
+  flex: 1;
+  position: relative;
+
+  &__indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__connector {
+    width: 100%;
+    position: absolute;
+    top: 16px;
+    left: calc(50% - 16px);
+  }
+
+  &__line {
+    width: 100%;
+    @extend %horizontal-line;
+
+    &--active {
+      @extend %horizontal-line-active;
+    }
+  }
+
+  &__container {
+    @extend %horizontal-container;
+  }
+
+  &__label {
+    @extend %label;
+  }
+
+  &__description {
+    @extend %description;
+  }
+}
+
+.marker {
+  @extend %marker;
+
+  &--checked {
+    background-color: $market-backgorund-color-checked;
+  }
+
+  &--error {
+    background-color: $market-background-color-error;
+  }
+}

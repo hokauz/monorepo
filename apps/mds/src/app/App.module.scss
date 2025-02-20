@@ -1,0 +1,15 @@
+.flex {
+  display: flex;
+}
+
+.container {
+  margin-bottom: 50px;
+
+  &--horizontal {
+    width: 500px;
+  }
+
+  &--vertical {
+    height: 500px;
+  }
+}
