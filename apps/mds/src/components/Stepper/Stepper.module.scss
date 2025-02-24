@@ -97,6 +97,7 @@ $vertical-container-margin-left: 16px;
   }
 
   &__connector {
+    min-height: 16px;
     height: 100%;
     display: flex;
     align-items: center;
